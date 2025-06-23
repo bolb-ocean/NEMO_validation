@@ -1,0 +1,40 @@
+name: NEMO sorting workflow
+on: [push]
+jobs:
+  double-clone:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mine.
+        uses: actions/checkout@v4
+        with:
+          repository: https://github.com/bolb-ocean/NEMO_validation.git'
+          path: main
+      - name: Checkout JMMP
+        uses: actions/checkout@v4
+        with:
+          repository: https://github.com/JMMP-Group/NEMO_validation.gi
+          ref: clean-up
+          sparse-checkout: |
+            EN4_postprocessing
+          path: JMMP
+      - name: Copy files over to main
+        shell: bash
+        working-directory: ./
+        run: |
+          cp JMMP/EN4_postprocessing/* main/EN4_postprocessing/.
+      - name: Pull request with merges
+        uses: peter-evans/create-pull-request@v7
+        with:
+          path: main
+          title: Update to JMMP AMM115
+          body: Automated pull request to pull updates to AMM15 from the JMMP github to the local MO branch.
+          branch: JMMP-AMM15-update
+          
+          
+          
+          
+          
+        
+            
+          
+    

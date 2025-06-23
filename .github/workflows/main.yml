@@ -7,12 +7,12 @@ jobs:
       - name: Checkout mine.
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/bolb-ocean/NEMO_validation.git'
+          repository: bolb-ocean/NEMO_validation
           path: main
       - name: Checkout JMMP
         uses: actions/checkout@v4
         with:
-          repository: https://github.com/JMMP-Group/NEMO_validation.gi
+          repository: JMMP-Group/NEMO_validation
           ref: clean-up
           sparse-checkout: |
             EN4_postprocessing

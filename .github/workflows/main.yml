@@ -21,7 +21,7 @@ jobs:
         shell: bash
         working-directory: ./
         run: |
-          cp JMMP/EN4_postprocessing/* main/EN4_postprocessing/.
+          cp -r JMMP/EN4_postprocessing/* main/EN4_postprocessing/.
       - name: Pull request with merges
         uses: peter-evans/create-pull-request@v7
         with:
